@@ -43,3 +43,18 @@ app.delete('/recetas/:id', async (req, res) => {
     await Receta.findByIdAndDelete(req.params.id);
     res.json({mensaje: "Se ha eliminado esta receta."})
 })
+
+app.put('/recetas/:id', async (req, res) => {
+    console.log("put detected")
+  try {
+    const recetaActualizada = await Receta.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+
+    res.json(recetaActualizada);
+  } catch (error) {
+    res.status(500).json({ error: "Error al actualizar receta" });
+  }
+});

@@ -7,6 +7,8 @@ function App() {
   const [ingredientes, setIngredientes] = useState("")
   const [tiempoCocinar, setTiempoCocinar] = useState("")
   const [recetas, setRecetas] = useState([])
+  const [recetaEditada, setnuevaReceta] = useState(null)
+
 
   useEffect(() => {
     agarrarRecetas();
@@ -19,6 +21,12 @@ function App() {
     setRecetas(data);
   }
 
+  const nuevaReceta = (receta) => {
+    setnuevaReceta(receta);
+    setNombre(receta.nombre);
+    setIngredientes(receta.ingredientes.join(","));
+    setTiempoCocinar(receta.tiempo);
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault(); 
@@ -30,14 +38,30 @@ function App() {
     }
 
     try {
+      
+    
+    if (recetaEditada) {
+
+      await fetch(`http://localhost:3000/recetas/${recetaEditada._id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(receta),
+      });
+
+      alert("Receta actualizada!");
+
+      setnuevaReceta(null);
+
+    } else {
       const res = await fetch("http://localhost:3000/recetas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(receta),
-      })
+      });
 
       const data = await res.json();
-      console.log("Receta creada!", data)
+      console.log("Receta creada!", data);
+    }
 
       // Limpiar inputs
       setNombre("");
@@ -51,10 +75,11 @@ function App() {
    
   const eliminarReceta = async (id) => {
     try{
-    await fetch('http://localhost:3000/recetas/${id}',{
+    await fetch(`http://localhost:3000/recetas/${id}`,{
       method: "DELETE"
       
     });
+
     agarrarRecetas();
   } catch(error){
     console.log("Error", error);
@@ -104,7 +129,8 @@ function App() {
             <li key={r._id} >
               <b>{r.nombre}</b> — {r.tiempo} min
               <br />
-              <button onClick={() => eliminarReceta(r.id)}>Eliminar receta</button>
+              <button onClick={() => eliminarReceta(r._id)}>Eliminar receta</button>
+              <button onClick={() => nuevaReceta(r)}>Editar receta</button>
               Ingredientes: {r.ingredientes.join(", ")}
             </li>
           ))}
