@@ -1,28 +1,21 @@
 import { StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import './index.css'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App.jsx'
-import Login from './Components/Login.jsx'
-import './Components/Login.css';
-
-function Log() {
+import './Components/Login.css'
+import './index.css'
+function Root() {
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
-    <>
-      {loggedIn ? (
-        <App />
-      ) : (
-     
-        <Login onLoginSuccess={() => setLoggedIn(true)} />
-      )}
-    </>
+    <BrowserRouter>
+      <App loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+    </BrowserRouter>
   );
 }
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    
-    <Log />
-  </StrictMode>,
+    <Root />
+  </StrictMode>
 )
