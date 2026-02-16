@@ -32,7 +32,9 @@ function Login({ onLoginSuccess }) {
   };
 
   return (
+    
     <div id="Login-container">
+    <div id="hero">RECETARIO</div>
       <h1 id="login-title">Login</h1>
       <form onSubmit={handleLogin}>
         <input

@@ -1,11 +1,32 @@
-#inputslogin {
-  display: flex;
-  flex-direction: column;
-  gap: 10px; 
+#hero {
+  color:greenyellow;
+  font-size: 3rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;  
 }
 
-#username,
-#password,
-#login-button {
+
+#login-title:hover {
+  color:rgb(205, 226, 235);
+  animation: color;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%; 
+}
+
+input, 
+#login-button {
+  width: 100%;
+  padding: 10px; 
+  box-sizing: border-box; 
+} 
+
+@keyframes color {
+from {
+  color:bisque
+
+}
+to { color:bisque}
 }
