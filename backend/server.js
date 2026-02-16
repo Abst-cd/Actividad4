@@ -7,6 +7,7 @@ const cors = require('cors');
 const bcrypt = require('bcryptjs')
 app.use(express.json());
 app.use(cors());
+const jwt = require('jsonwebtoken');
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('DB conectada'))
@@ -26,36 +27,44 @@ const userSchema = new mongoose.Schema({
 const Usuario = mongoose.model('Usuario', userSchema);
 
 
-// Login usuario
-app.post('/api/auth/register-and-login', async (req, res) => {
+// Login/register usuario
+  app.post('/api/auth/login-or-register', async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    if (!username || !password) {
-      return res.status(400).json({ success: false, message: 'Faltan datos requeridos' });
+    let user = await Usuario.findOne({ username });
+
+    if (user) {
+      const validPass = await bcrypt.compare(password, user.password);
+      if (!validPass) {
+        return res.status(400).json({ success: false, message: 'Contraseña incorrecta' });
+      }
+    } else {
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt);
+
+      user = await Usuario.create({
+        username,
+        password: hashedPassword
+      });
     }
 
-    const existingUser = await Usuario.findOne({ username });
-    if (existingUser) {
-      return res.status(400).json({ success: false, message: 'El usuario ya existe' });
-    }
+    const token = jwt.sign(
+      { userId: user._id }, 
+      process.env.JWT_SECRET || 'secreto_temporal', 
+      { expiresIn: '24h' }
+    );
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
-
-    const newUser = await Usuario.create({
-      username,
-      password: hashedPassword
-    });
-
-    res.status(201).json({ 
-      success: true, 
-      message: 'Usuario creado y login exitoso', 
-      userId: newUser._id 
+    res.status(200).json({
+      success: true,
+      message: 'Acceso concedido',
+      token,
+      userId: user._id
     });
 
   } catch (error) {
-    res.status(500).json({ success: false, message: 'Error en el servidor', error });
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Error en el servidor' });
   }
 });
 
