@@ -27,3 +27,25 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+@media (max-width: 1024px) {
+  #root {
+    padding: 1rem; 
+  }
+
+  .contenedor {
+    flex-direction: column; 
+    width: 100%;          
+    padding: 10px;
+    gap: 20px;            
+  }
+
+  .agregarRecetas, .listadeRecetasBD {
+    width: 100%;           
+    box-sizing: border-box; 
+  }
+
+  input {
+    width: 100%;           
+    box-sizing: border-box;
+  }
+}
