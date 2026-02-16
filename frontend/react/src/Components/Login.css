@@ -1,0 +1,11 @@
+#inputslogin {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
+#username,
+#password,
+#login-button {
+  width: 100%; 
+}
