@@ -25,25 +25,38 @@ const userSchema = new mongoose.Schema({
 });
 const Usuario = mongoose.model('Usuario', userSchema);
 
-app.post('/api/auth/register', async (req, res) => {
-  const { username, password } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10); // encriptar contraseña
-  const newUser = new Usuario({ username, password: hashedPassword });
-  await newUser.save();
-  res.json({ success: true, message: 'Usuario creado' });
-});
 
 // Login usuario
-app.post('/api/auth/login', async (req, res) => {
-  const { username, password } = req.body;
+app.post('/api/auth/register-and-login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
 
-  const user = await Usuario.findOne({ username });
-  if (!user) return res.status(400).json({ success: false, message: 'Usuario no encontrado' });
+    if (!username || !password) {
+      return res.status(400).json({ success: false, message: 'Faltan datos requeridos' });
+    }
 
-  const validPass = await bcrypt.compare(password, user.password);
-  if (!validPass) return res.status(400).json({ success: false, message: 'Contraseña incorrecta' });
+    const existingUser = await Usuario.findOne({ username });
+    if (existingUser) {
+      return res.status(400).json({ success: false, message: 'El usuario ya existe' });
+    }
 
-  res.json({ success: true, message: 'Login exitoso', userId: user._id });
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    const newUser = await Usuario.create({
+      username,
+      password: hashedPassword
+    });
+
+    res.status(201).json({ 
+      success: true, 
+      message: 'Usuario creado y login exitoso', 
+      userId: newUser._id 
+    });
+
+  } catch (error) {
+    res.status(500).json({ success: false, message: 'Error en el servidor', error });
+  }
 });
 
 
