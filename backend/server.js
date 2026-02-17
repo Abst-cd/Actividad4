@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs')
 app.use(express.json());
 app.use(cors());
 const jwt = require('jsonwebtoken');
+const fs = require('fs').promises;
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('DB conectada'))
@@ -28,7 +29,7 @@ const Usuario = mongoose.model('Usuario', userSchema);
 
 
 // Login/register usuario
-  app.post('/api/auth/login-or-register', async (req, res) => {
+  app.post('/api/auth/login', async (req, res) => {
   try {
     const { username, password } = req.body;
 
@@ -78,7 +79,7 @@ app.get('/', (req, res) => {
     res.send('servidor funcionando!');
 });
 
-app.get('/api/auth/login-or-register', async (req, res) => {
+app.get('/api/auth/login', async (req, res) => {
   try {
     const users = await Usuario.find({}, 'username _id');
     res.json({ success: true, users });
@@ -105,11 +106,13 @@ res.json(usuariosBD);
 app.post('/recetas', async (req, res) => {
     const recetaNueva = new Receta(req.body);
     await recetaNueva.save();
+    await actualizarArchivoRecetas();
     res.status(201).json(recetaNueva);
 })
 
 app.delete('/recetas/:id', async (req, res) => {
     await Receta.findByIdAndDelete(req.params.id);
+    await actualizarArchivoRecetas();
     res.json({mensaje: "Se ha eliminado esta receta."})
 })
 
@@ -121,10 +124,29 @@ app.put('/recetas/:id', async (req, res) => {
       { new: true }
     );
 
+    await actualizarArchivoRecetas();
+
     res.json(recetaActualizada);
   } catch (error) {
     res.status(500).json({ error: "Error al actualizar receta" });
   }
 });
+
+async function actualizarArchivoRecetas() {
+  try {
+    const recetas = await Receta.find();
+
+    await fs.writeFile(
+      'recetas.json',
+      JSON.stringify(recetas, null, 2)
+    );
+
+    console.log('Archivo recetas.json actualizado');
+  } catch (error) {
+    console.error('Error actualizando JSON:', error);
+  }
+}
+
+
 
 

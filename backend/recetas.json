@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "6993abefe25840fe922f449b",
+    "nombre": "caldo de verduras",
+    "ingredientes": [
+      "papa",
+      " zanahora",
+      " calabaza"
+    ],
+    "tiempo": 35,
+    "__v": 0
+  },
+  {
+    "_id": "6993ac16608b58f8cc6d8dd0",
+    "nombre": "aaa",
+    "ingredientes": [
+      "papa",
+      " zanahoria"
+    ],
+    "tiempo": 24,
+    "__v": 0
+  }
+]

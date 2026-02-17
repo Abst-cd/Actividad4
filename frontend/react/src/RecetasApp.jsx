@@ -9,7 +9,7 @@ function RecetasApp() {
   const [recetas, setRecetas] = useState([])
   const [recetaEditada, setnuevaReceta] = useState(null)
 
-
+    
   useEffect(() => {
     agarrarRecetas();
   }, []);
@@ -113,7 +113,10 @@ function RecetasApp() {
           onChange={(e) => setTiempoCocinar(e.target.value)}
         /><br /><br />
 
-        <button type="submit">Agregar!</button>
+        <button type="submit">
+        Agregar!
+        </button>
+
       </form>
     </div>
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Login.css";
 
 function Login({ onLoginSuccess }) {
@@ -6,12 +6,16 @@ function Login({ onLoginSuccess }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
+  
+
   const handleLogin = async (event) => {
     event.preventDefault(); 
     setError("");
-
+   
+    
     try {
-      const res = await fetch("http://localhost:3000/api/auth/login-or-register", {
+      
+      const res = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
