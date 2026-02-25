@@ -6,7 +6,6 @@ const fs = require('fs').promises;
 const bcrypt = require('bcryptjs');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '.env') });
-console.log("la clave sirve?" , process.env.JWT_SECRET)
 const autenticarToken = require('../middleware/auth.js');
 const verificarRol = require('../middleware/verifRoles.js');
 
