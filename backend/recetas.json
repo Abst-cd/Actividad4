@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "_id": "699e58b8d6b7b14108eec0e8",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "aguaaaaa"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e58b8d6b7b14108eec0f2",
+    "nombre": "papas fritas",
+    "ingredientes": [
+      "patatas"
+    ],
+    "tiempo": 15,
+    "__v": 0
+  }
+]

@@ -24,15 +24,21 @@ function Login({ onLoginSuccess }) {
       const data = await res.json();
 
       if (data.success) {
-        console.log("Login exitoso:", data);
-        onLoginSuccess();
-      } else {
-        setError(data.message || "Error en login");
-      }
-    } catch (err) {
-      console.error("Error durante login:", err);
-      setError("Error en la conexión al servidor");
+      // 1. Guardamos el token (Sin el asterisco)
+      localStorage.setItem('token', data.token); 
+      
+      console.log("Login exitoso, token guardado.");
+      
+      // 2. Avisamos a la App que ya estamos logueados
+      onLoginSuccess(); 
+    } else {
+      setError(data.message || "Error en login");
     }
+  } catch (err) {
+    console.error("Error durante login:", err);
+    setError("Error en la conexión al servidor");
+  }
+    
   };
 
   return (

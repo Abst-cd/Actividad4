@@ -1,17 +1,18 @@
 const jwt = require('jsonwebtoken');
 
 function autenticarToken(req, res, next) {
-  const token = req.headers['authorization'];
+  const authHeader = req.headers['authorization'];
 
-  if (!token) {
-    return res.status(401).send('Acceso denegado');
+  if (!authHeader) {
+    return res.status(401).send('Acceso denegado: No hay header');
   }
 
-  jwt.verify(token, 'clave_secreta', (err, user) => {
-    if (err) {
-      return res.status(403).send('Token inválido');
-    }
+  const token = authHeader.split(' ')[1] || authHeader;
 
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+        return res.status(403).json({error: 'token invalido'});
+    }
     req.user = user;
     next();
   });

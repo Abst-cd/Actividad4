@@ -1,0 +1,221 @@
+[
+  {
+    "_id": "699a5957c057412b485b3bba",
+    "nombre": "aaab",
+    "ingredientes": [
+      "232fdsdf"
+    ],
+    "tiempo": 12,
+    "__v": 0
+  },
+  {
+    "_id": "699a5b20ca9ae0a6fb84ed43",
+    "nombre": "french fries",
+    "ingredientes": [
+      "papa"
+    ],
+    "tiempo": 30,
+    "__v": 0
+  },
+  {
+    "_id": "699e446b1ff43484c979291f",
+    "ingredientes": [],
+    "__v": 0
+  },
+  {
+    "_id": "699e4496a1b904661ce2dbcd",
+    "ingredientes": [],
+    "__v": 0
+  },
+  {
+    "_id": "699e44a8a79029f434a659f9",
+    "ingredientes": [],
+    "__v": 0
+  },
+  {
+    "_id": "699e44c3d6b00d35c0c085df",
+    "ingredientes": [],
+    "__v": 0
+  },
+  {
+    "_id": "699e45bf2093b4dedd7f6414",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa"
+    ],
+    "tiempo": 5,
+    "__v": 0
+  },
+  {
+    "_id": "699e45ee47278e0d8f55efdd",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa"
+    ],
+    "tiempo": 5,
+    "__v": 0
+  },
+  {
+    "_id": "699e463e1b8c9996e97737f3",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa"
+    ],
+    "tiempo": 5,
+    "__v": 0
+  },
+  {
+    "_id": "699e471663dc52ee46c0e7bc",
+    "ingredientes": [],
+    "__v": 0
+  },
+  {
+    "_id": "699e4b83ec5436c6ea65abe8",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e548957dd00166488e6d4",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e54a6d919ad3aa59f27ba",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e54c64d5ad23d0110cf86",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e54ee163c0f6dd99697a3",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e558f20d7147a93e9aa3a",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e55c615c31ea23aa1a4b4",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e5628bd2898a1a5cd6a2d",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e566b838f86ac2d865043",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e568d370ebf91769e81a7",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e56e990267e3470b05ae3",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e570e4b6a7c1a3c4eec56",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e577812165f1b92d5c3d8",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e58b8d6b7b14108eec0e8",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e58b8d6b7b14108eec0f2",
+    "nombre": "papas fritas",
+    "ingredientes": [
+      "patatas"
+    ],
+    "tiempo": 15,
+    "__v": 0
+  }
+]
