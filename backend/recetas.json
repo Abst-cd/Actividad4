@@ -1,16 +1,35 @@
 [
   {
-    "_id": "699e58b8d6b7b14108eec0e8",
+    "_id": "699e7379b0aa2a89a4a131c3",
     "nombre": "papas",
     "ingredientes": [
       "papa",
-      "aguaaaaa"
+      "agua"
     ],
     "tiempo": 20,
     "__v": 0
   },
   {
-    "_id": "699e58b8d6b7b14108eec0f2",
+    "_id": "699e7379b0aa2a89a4a131cd",
+    "nombre": "papas fritasAAAAAAAAAA",
+    "ingredientes": [
+      "patatas"
+    ],
+    "tiempo": 15,
+    "__v": 0
+  },
+  {
+    "_id": "699e73a63661185d368fa9c3",
+    "nombre": "papas",
+    "ingredientes": [
+      "papa",
+      "agua"
+    ],
+    "tiempo": 20,
+    "__v": 0
+  },
+  {
+    "_id": "699e73a63661185d368fa9cd",
     "nombre": "papas fritas",
     "ingredientes": [
       "patatas"
